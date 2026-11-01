@@ -1,0 +1,27 @@
+// F4SE version template. The built-in Game adapter uses Address Library ids and
+// engine structures only on runtimes verified in src/runtime/NativeGameServices.cpp;
+// no address or structure independence is claimed for any runtime family.
+#include <F4SE/F4SE.h>
+F4SE_PLUGIN_VERSION = []() noexcept {
+    F4SE::PluginVersionData v{};
+    v.PluginVersion({ ${COMMONLIB_PLUGIN_VERSION_MAJOR}, ${COMMONLIB_PLUGIN_VERSION_MINOR}, ${COMMONLIB_PLUGIN_VERSION_PATCH}, 0 });
+    v.PluginName("${COMMONLIB_PLUGIN_NAME}");
+    v.AuthorName("${COMMONLIB_PLUGIN_AUTHOR}");
+    v.UsesAddressLibrary(false);
+    v.UsesAddressLibraryNG(false);
+    v.UsesAddressLibraryAE(false);
+    v.UsesSigScanning(false);
+    // No address independence is claimed. F4SE therefore requires an explicit
+    // runtime list.
+    v.CompatibleVersions({
+        F4SE::RUNTIME_1_10_980, F4SE::RUNTIME_1_10_984,
+        F4SE::RUNTIME_1_11_137, F4SE::RUNTIME_1_11_159,
+        F4SE::RUNTIME_1_11_169, F4SE::RUNTIME_1_11_191,
+        F4SE::RUNTIME_1_11_221, F4SE::RUNTIME_1_11_240
+    });
+    v.IsLayoutDependent(false);
+    v.IsLayoutDependentNG(false);
+    v.IsLayoutDependentAE(false);
+    v.HasNoStructUse(false);
+    return v;
+}();

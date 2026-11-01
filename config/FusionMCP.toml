@@ -1,0 +1,15 @@
+# No service starts unless explicitly enabled. It binds 127.0.0.1 only and needs no token:
+# it refuses foreign Host/Origin headers and non-JSON POSTs (browser protection).
+[MCP]
+Enabled = false
+AllowMutations = false
+Port = 8922
+# Idle watchdog: quit the game cleanly when no MCP request arrives for this many minutes
+# (1..1440). 0 = off. fusionmcp.watchdog arms or disarms it for one session.
+IdleQuitMinutes = 0
+
+# Optional RenderDoc in-app capture (fusionmcp.renderdoc.*). Load = true loads renderdoc.dll at plugin load,
+# before the D3D device exists. Requires restart. Skip if another plugin already loads it.
+[RenderDoc]
+Load = false
+DllPath = 'C:\Program Files\RenderDoc\renderdoc.dll'
